@@ -146,7 +146,7 @@ li {
 				<li>D.I.Blogについて</li>
 				<li>登録フォーム</li>
 				<li>問い合わせ</li>
-				<li><a href='<s:url action="GoHomeAction"/>'>アカウント登録</a></li>
+				<li><a href='<s:url action="RegistrationAction"/>'>アカウント登録</a></li>
 				<li>その他</li>
 			</ul>
 	</div>

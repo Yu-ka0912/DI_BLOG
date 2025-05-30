@@ -39,7 +39,9 @@ header ul {
 	padding-right: 20px;
 	padding-top: 15px;
 }
-
+#nav-list li a {
+	color: white;
+}
 #main {
 	clear: both;
 }
@@ -144,7 +146,7 @@ li {
 				<li>D.I.Blogについて</li>
 				<li>登録フォーム</li>
 				<li>問い合わせ</li>
-				<li>アカウント登録</li>
+				<li><a href='<s:url action="GoHomeAction"/>'>アカウント登録</a></li>
 				<li>その他</li>
 			</ul>
 	</div>

@@ -10,5 +10,10 @@
 			method="execute">
 			<result name="success">registration.jsp</result>
 		</action>
+		<action name="RegistrationConfirmAction" class="com.diworksdev.di_blog.action.RegistrationConfirmAction"
+			method="execute">
+			<result name="success">registrationConfirm.jsp</result>
+			<result name="error">registration.jsp</result>
+		</action>
 	</package>
 </struts>

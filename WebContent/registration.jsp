@@ -41,12 +41,48 @@
 			input.value = '';
 		}
 	}
+	function validatePassword(input) {
+		const pattern = /^[a-zA-Z0-9]+$/;
+		if (!pattern.test(input.value)) {
+			alert("パスワードは半角英数字のみで入力してください。");
+			input.value = '';
+		}
+	}
 	function validateEmailSimple(input) {
 		const pattern = /^[a-zA-Z0-9@\-\.]+$/;
 		if (!pattern.test(input.value)) {
 			alert("メールアドレスは半角英数字、@、-、.のみ使用できます。");
 			input.value = '';
 		}
+	}
+	function validateForm() {
+		var isValid = true;
+
+		var errors = document.getElementsByClassName("error");
+		for (var i = 0; i < errors.length; i++) {
+			errors[i].innerHTML = "";
+		}
+
+		var checks = [
+			{name: "last_name", label: "名前（姓）" },
+			{name: "first_name", label: "名前（名）" },
+			{name: "last_name_kana", label: "カナ（姓）" },
+			{name: "first_name_kana", label: "カナ（名）" },
+			{name: "email", label: "メールアドレス" },
+			{name: "password", label: "パスワード" },
+			{name: "postal_code", label: "郵便番号" },
+			{name: "city", label: "住所（市区町村）" },
+			{name: "address", label: "住所（番地）" }
+		];
+
+		for (var j = 0; j < checks.length; j++) {
+			var field = document.getElementsByName(checks[j].name)[0];
+			if (field && field.value.trim() === "") {
+				document.getElementById("error_" + checks[j].name).innerHTML = checks[j].label + "が未入力です。";
+				isValid = false;
+			}
+		}
+		return isValid;
 	}
 </script>
 <style type="text/css">
@@ -92,6 +128,10 @@ input {
 	display: block;
 	padding: 6px 30px;
 }
+.error {
+	color: red;
+	font-size: 0.9em;
+}
 </style>
 </head>
 	<div id="header">アカウント登録</div>
@@ -102,30 +142,48 @@ input {
 				<s:property value="errorMessage" escape="false" />
 			</s:if>
 			<table>
-				<s:form action="RegistrationConfirmAction">
+				<s:form action="RegistrationConfirmAction" onsubmit="return validateForm();">
 					<tr>
 						<td><label>名前(姓)</label></td>
-						<td><input type="text" name="last_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" /></td>
+						<td>
+							<input type="text" name="last_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
+							<div class="error" id="error_last_name"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>名前(名)</label></td>
-						<td><input type="text" name="first_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" /></td>
+						<td>
+							<input type="text" name="first_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
+							<div class="error" id="error_first_name"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>カナ(姓)</label></td>
-						<td><input type="text" name="last_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" /></td>
+						<td>
+							<input type="text" name="last_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
+							<div class="error" id="error_last_name_kana"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>カナ(名)</label></td>
-						<td><input type="text" name="first_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" /></td>
+						<td>
+							<input type="text" name="first_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
+							<div class="error" id="error_first_name_kana"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>メールアドレス</label></td>
-						<td><input type="text" name="email" maxlength="100" onblur="validateEmailSimple(this)" value="" /></td>
+						<td>
+							<input type="text" name="email" maxlength="100" onblur="validateEmailSimple(this)" value="" />
+							<div class="error" id="error_email"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>パスワード</label></td>
-						<td><input type="password" name="password" maxlength="10" value="" /></td>
+						<td>
+							<input type="text" name="password" maxlength="10" onblur="validatePassword(this)" value="" />
+							<div class="error" id="error_password"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>性別</label></td>
@@ -138,6 +196,7 @@ input {
 						<td><label>郵便番号</label></td>
 						<td>
 							<input type="text" name="postal_code" maxlength="7" onblur="validatePostalCodeOnly(this)" value="" />
+							<div class="error" id="error_postal_code"></div>
 						</td>
 					</tr>
 					<tr>
@@ -197,11 +256,17 @@ input {
 					</tr>
 					<tr>
 						<td><label>住所(市区町村)</label></td>
-						<td><input type="text" name="city" maxlength="10" onblur="validateAddressPart(this)" value="" /></td>
+						<td>
+							<input type="text" name="city" maxlength="10" onblur="validateAddressPart(this)" value="" />
+							<div class="error" id="error_city"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>住所(番地)</label></td>
-						<td><input type="text" name="address" maxlength="10" onblur="validateAddressPart(this)" value="" /></td>
+						<td>
+							<input type="text" name="address" maxlength="10" onblur="validateAddressPart(this)" value="" />
+							<div class="error" id="error_address"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><label>アカウント権限</label></td>

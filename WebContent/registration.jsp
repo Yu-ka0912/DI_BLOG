@@ -130,10 +130,11 @@ input {
 }
 .error {
 	color: red;
-	font-size: 0.9em;
+	font-size: 0.7em;
 }
 </style>
 </head>
+<body>
 	<div id="header">アカウント登録</div>
 	<p>アカウント登録画面</p>
 	<div id="main">
@@ -188,8 +189,8 @@ input {
 					<tr>
 						<td><label>性別</label></td>
 						<td>
-							<input type="radio" name="gender" value="male" checked/>男
-							<input type="radio" name="gender" value="female"> 女
+							<input type="radio" name="gender" value="男" checked/>男
+							<input type="radio" name="gender" value="女"> 女
 						</td>
 					</tr>
 					<tr>
@@ -277,13 +278,11 @@ input {
 							</select>
 						</td>
 					</tr>
-					<s:submit value="確認する" cssClass="submit-button"/>
+					<s:submit value="確認する" class="submit-button"/>
 				</s:form>
 			</table>
 		</div>
 	</div>
-
-
 	<div id=footer>Copyright D.I.works│D.I.blog is the one which
 		provides A to Z about programming</div>
 </body>

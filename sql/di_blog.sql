@@ -19,5 +19,7 @@ create table users(
 	prefecture varchar(50),
 	city varchar(10),
 	address varchar(100),
-	role varchar(10)
+	role varchar(10),
+	registered_time datetime,
+	updated_time datetime
 );

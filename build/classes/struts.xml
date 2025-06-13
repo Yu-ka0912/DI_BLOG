@@ -15,5 +15,13 @@
 			<result name="success">registrationConfirm.jsp</result>
 			<result name="error">registration.jsp</result>
 		</action>
+		<action name="RegistrationCompleteAction"
+			class="com.diworksdev.di_blog.action.RegistrationCompleteAction" method="execute">
+			<result name="success">RegistrationComplete.jsp</result>
+		</action>
+		<action name="HomeAction" class="com.diworksdev.di_blog.action.HomeAction"
+			method="execute">
+			<result name="success">home.jsp</result>
+		</action>
 	</package>
 </struts>

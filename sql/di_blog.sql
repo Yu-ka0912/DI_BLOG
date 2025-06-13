@@ -21,5 +21,5 @@ create table users(
 	address varchar(100),
 	role varchar(10),
 	registered_time datetime,
-	updated_time datetime
+	updated_ datetime
 );

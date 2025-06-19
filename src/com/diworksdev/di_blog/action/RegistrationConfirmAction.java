@@ -1,40 +1,45 @@
 package com.diworksdev.di_blog.action;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
+public class RegistrationConfirmAction extends ActionSupport implements SessionAware{
 
-public class RegistrationConfirmAction extends ActionSupport{
+	private Map<String, Object> session;
 
+	private String family_name;
 	private String last_name;
-	private String first_name;
+	private String family_name_kana;
 	private String last_name_kana;
-	private String first_name_kana;
-	private String email;
+	private String mail;
 	private String password;
 	private String gender;
 	private String postal_code;
 	private String prefecture;
-	private String city;
-	private String address;
-	private String role;
+	private String address_1;
+	private String address_2;
+	private String authority;
 
 	public String execute() {
 		boolean hasError = false;
-		if (isEmpty(last_name)) {
+		if (isEmpty(family_name)) {
 			addActionError("名前（姓）が未入力です。");
 			hasError = true;
 		}
-		if (isEmpty(first_name)) {
+		if (isEmpty(last_name)) {
 			addActionError("名前（名）が未入力です。");
 			hasError = true;
 		}
-		if (isEmpty(last_name_kana)) {
+		if (isEmpty(family_name_kana)) {
 			addActionError("カナ（姓）が未入力です。");
 			hasError = true;
 		}
-		if (isEmpty(first_name_kana)) {
+		if (isEmpty(last_name_kana)) {
 			addActionError("カナ（名）が未入力です。");
 			hasError = true;
 		}
-		if (isEmpty(email)) {
+		if (isEmpty(mail)) {
 			addActionError("メールアドレスが未入力です。");
 			hasError = true;
 		}
@@ -46,21 +51,44 @@ public class RegistrationConfirmAction extends ActionSupport{
 			addActionError("郵便番号が未入力です。");
 			hasError = true;
 		}
-		if (isEmpty(city)) {
+		if (isEmpty(address_1)) {
 			addActionError("住所（市区町村）が未入力です。");
 			hasError = true;
 		}
-		if (isEmpty(address)) {
+		if (isEmpty(address_2)) {
 			addActionError("住所（番地）が未入力です。");
 			hasError = true;
 		}
 		if (hasError) {
 			return ERROR;
 		}
+
+		session.put("family_name", family_name);
+		session.put("last_name", last_name);
+		session.put("family_name_kana", family_name_kana);
+		session.put("last_name_kana", last_name_kana);
+		session.put("mail", mail);
+		session.put("password", password);
+		session.put("gender", gender);
+		session.put("postal_code", postal_code);
+		session.put("prefecture", prefecture);
+		session.put("address_1", address_1);
+		session.put("address_2", address_2);
+		session.put("authority", authority);
+
+
 		return SUCCESS;
 	}
 	private boolean isEmpty(String value) {
 		return value == null || value.trim().isEmpty();
+	}
+
+	public String getFamily_name() {
+		return family_name;
+	}
+
+	public void setFamily_name(String family_name) {
+		this.family_name = family_name;
 	}
 
 	public String getLast_name() {
@@ -71,12 +99,12 @@ public class RegistrationConfirmAction extends ActionSupport{
 		this.last_name = last_name;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFamily_name_kana() {
+		return family_name_kana;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFamily_name_kana(String family_name_kana) {
+		this.family_name_kana = family_name_kana;
 	}
 
 	public String getLast_name_kana() {
@@ -87,20 +115,12 @@ public class RegistrationConfirmAction extends ActionSupport{
 		this.last_name_kana = last_name_kana;
 	}
 
-	public String getFirst_name_kana() {
-		return first_name_kana;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setFirst_name_kana(String first_name_kana) {
-		this.first_name_kana = first_name_kana;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public String getPassword() {
@@ -135,28 +155,32 @@ public class RegistrationConfirmAction extends ActionSupport{
 		this.prefecture = prefecture;
 	}
 
-	public String getCity() {
-		return city;
+	public String getAddress_1() {
+		return address_1;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setAddress_1(String address_1) {
+		this.address_1 = address_1;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAddress_2() {
+		return address_2;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress_2(String address_2) {
+		this.address_2 = address_2;
 	}
 
-	public String getRole() {
-		return role;
+	public String getAuthority() {
+		return authority;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
+}
 

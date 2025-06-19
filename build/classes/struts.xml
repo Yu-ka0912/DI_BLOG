@@ -17,7 +17,7 @@
 		</action>
 		<action name="RegistrationCompleteAction"
 			class="com.diworksdev.di_blog.action.RegistrationCompleteAction" method="execute">
-			<result name="success">RegistrationComplete.jsp</result>
+			<result name="success">registrationComplete.jsp</result>
 		</action>
 		<action name="HomeAction" class="com.diworksdev.di_blog.action.HomeAction"
 			method="execute">

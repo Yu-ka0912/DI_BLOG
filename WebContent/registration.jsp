@@ -64,15 +64,15 @@
 		}
 
 		var checks = [
-			{name: "last_name", label: "名前（姓）" },
-			{name: "first_name", label: "名前（名）" },
-			{name: "last_name_kana", label: "カナ（姓）" },
-			{name: "first_name_kana", label: "カナ（名）" },
-			{name: "email", label: "メールアドレス" },
+			{name: "family_name", label: "名前（姓）" },
+			{name: "last_name", label: "名前（名）" },
+			{name: "family_name_kana", label: "カナ（姓）" },
+			{name: "last_name_kana", label: "カナ（名）" },
+			{name: "mail", label: "メールアドレス" },
 			{name: "password", label: "パスワード" },
 			{name: "postal_code", label: "郵便番号" },
-			{name: "city", label: "住所（市区町村）" },
-			{name: "address", label: "住所（番地）" }
+			{name: "address_1", label: "住所（市区町村）" },
+			{name: "address_2", label: "住所（番地）" }
 		];
 
 		for (var j = 0; j < checks.length; j++) {
@@ -147,35 +147,35 @@ input {
 					<tr>
 						<td><label>名前(姓)</label></td>
 						<td>
-							<input type="text" name="last_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
+							<input type="text" name="family_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
 							<div class="error" id="error_last_name"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>名前(名)</label></td>
 						<td>
-							<input type="text" name="first_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
+							<input type="text" name="last_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
 							<div class="error" id="error_first_name"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>カナ(姓)</label></td>
 						<td>
-							<input type="text" name="last_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
+							<input type="text" name="family_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
 							<div class="error" id="error_last_name_kana"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>カナ(名)</label></td>
 						<td>
-							<input type="text" name="first_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
+							<input type="text" name="last_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
 							<div class="error" id="error_first_name_kana"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>メールアドレス</label></td>
 						<td>
-							<input type="text" name="email" maxlength="100" onblur="validateEmailSimple(this)" value="" />
+							<input type="text" name="mail" maxlength="100" onblur="validateEmailSimple(this)" value="" />
 							<div class="error" id="error_email"></div>
 						</td>
 					</tr>
@@ -258,21 +258,21 @@ input {
 					<tr>
 						<td><label>住所(市区町村)</label></td>
 						<td>
-							<input type="text" name="city" maxlength="10" onblur="validateAddressPart(this)" value="" />
+							<input type="text" name="address_1" maxlength="10" onblur="validateAddressPart(this)" value="" />
 							<div class="error" id="error_city"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>住所(番地)</label></td>
 						<td>
-							<input type="text" name="address" maxlength="10" onblur="validateAddressPart(this)" value="" />
+							<input type="text" name="address_2" maxlength="10" onblur="validateAddressPart(this)" value="" />
 							<div class="error" id="error_address"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>アカウント権限</label></td>
 						<td>
-							<select name="role">
+							<select name="authority">
 								<option value="一般">一般</option>
 								<option value="管理者">管理者</option>
 							</select>

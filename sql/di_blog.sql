@@ -8,18 +8,18 @@ drop table if exists users;
 
 create table users(
 	id int not null primary key auto_increment,
-	last_name varchar(10),
-	first_name varchar(10),
-	last_name_kana varchar(10),
-	first_name_kana varchar(10),
-	email varchar(100),
-	password varchar(10),
+	family_name varchar(100),
+	last_name varchar(100),
+	family_name_kana varchar(100),
+	last_name_kana varchar(100),
+	mail varchar(255),
+	password varchar(255),
 	gender varchar(10),
 	postal_code char(7),
-	prefecture varchar(50),
-	city varchar(10),
-	address varchar(100),
-	role varchar(10),
+	prefecture varchar(100),
+	address_1 varchar(100),
+	address_2 varchar(255),
+	authority varchar(10),
 	registered_time datetime,
-	updated_ datetime
+	updated_date datetime
 );

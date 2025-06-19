@@ -75,6 +75,7 @@ table {
 <div id="header">登録内容確認</div>
 	<p>アカウント登録確認画面</p>
 	<div id="main">
+		<s:actionerror />
 		<s:form action="RegistrationCompleteAction">
 			<table>
 				<tr id="box">
@@ -82,7 +83,7 @@ table {
 						<label>名前(姓)</label>
 					</td>
 					<td>
-						<s:property value="last_name"/>
+						<s:property value="family_name"/>
 					</td>
 				</tr>
 				<tr id="box">
@@ -90,7 +91,7 @@ table {
 						<label>名前(名)</label>
 					</td>
 					<td>
-						<s:property value="first_name"/>
+						<s:property value="last_name"/>
 					</td>
 				</tr>
 				<tr id="box">
@@ -98,7 +99,7 @@ table {
 						<label>カナ(姓)</label>
 					</td>
 					<td>
-						<s:property value="last_name_kana"/>
+						<s:property value="family_name_kana"/>
 					</td>
 				</tr>
 				<tr id="box">
@@ -106,7 +107,7 @@ table {
 						<label>カナ(名)</label>
 					</td>
 					<td>
-						<s:property value="first_name_kana"/>
+						<s:property value="last_name_kana"/>
 					</td>
 				</tr>
 				<tr id="box">
@@ -114,7 +115,7 @@ table {
 						<label>メールアドレス</label>
 					</td>
 					<td>
-						<s:property value="email"/>
+						<s:property value="mail"/>
 					</td>
 				</tr>
 				<tr id="box">
@@ -162,7 +163,7 @@ table {
 						<label>住所(市区町村)</label>
 					</td>
 					<td>
-						<s:property value="city"/>
+						<s:property value="address_1"/>
 					</td>
 				</tr>
 				<tr id="box">
@@ -170,7 +171,7 @@ table {
 						<label>住所(番地)</label>
 					</td>
 					<td>
-						<s:property value="address"/>
+						<s:property value="address_2"/>
 					</td>
 				</tr>
 				<tr id="box">
@@ -178,7 +179,7 @@ table {
 						<label>アカウント権限</label>
 					</td>
 					<td>
-						<s:property value="role"/>
+						<s:property value="authority"/>
 					</td>
 				</tr>
 			</table>

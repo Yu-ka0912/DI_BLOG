@@ -55,7 +55,7 @@
 			input.value = '';
 		}
 	}
-	function validateForm() {
+	function validateForm(event) {
 		var isValid = true;
 
 		var errors = document.getElementsByClassName("error");
@@ -80,6 +80,12 @@
 			if (field && field.value.trim() === "") {
 				document.getElementById("error_" + checks[j].name).innerHTML = checks[j].label + "が未入力です。";
 				isValid = false;
+			}
+		}
+
+		if (!isValid) {
+			if (event && event.preventDefault) {
+				event.preventDefault();  // フォーム送信中止
 			}
 		}
 		return isValid;
@@ -143,40 +149,40 @@ input {
 				<s:property value="errorMessage" escape="false" />
 			</s:if>
 			<table>
-				<s:form action="RegistrationConfirmAction" onsubmit="return validateForm();">
+				<s:form action="RegistrationConfirmAction" onsubmit="return validateForm(event);">
 					<tr>
 						<td><label>名前(姓)</label></td>
 						<td>
 							<input type="text" name="family_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
-							<div class="error" id="error_last_name"></div>
+							<div class="error" id="error_family_name"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>名前(名)</label></td>
 						<td>
 							<input type="text" name="last_name" maxlength="10" value="" onblur="validateJapaneseOnly(this)" />
-							<div class="error" id="error_first_name"></div>
+							<div class="error" id="error_last_name"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>カナ(姓)</label></td>
 						<td>
 							<input type="text" name="family_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
-							<div class="error" id="error_last_name_kana"></div>
+							<div class="error" id="error_family_name_kana"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>カナ(名)</label></td>
 						<td>
 							<input type="text" name="last_name_kana" maxlength="10" onblur="validateKatakanaOnly(this)" value="" />
-							<div class="error" id="error_first_name_kana"></div>
+							<div class="error" id="error_last_name_kana"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>メールアドレス</label></td>
 						<td>
 							<input type="text" name="mail" maxlength="100" onblur="validateEmailSimple(this)" value="" />
-							<div class="error" id="error_email"></div>
+							<div class="error" id="error_mail"></div>
 						</td>
 					</tr>
 					<tr>
@@ -259,14 +265,14 @@ input {
 						<td><label>住所(市区町村)</label></td>
 						<td>
 							<input type="text" name="address_1" maxlength="10" onblur="validateAddressPart(this)" value="" />
-							<div class="error" id="error_city"></div>
+							<div class="error" id="error_address_1"></div>
 						</td>
 					</tr>
 					<tr>
 						<td><label>住所(番地)</label></td>
 						<td>
 							<input type="text" name="address_2" maxlength="10" onblur="validateAddressPart(this)" value="" />
-							<div class="error" id="error_address"></div>
+							<div class="error" id="error_address_2"></div>
 						</td>
 					</tr>
 					<tr>
@@ -278,7 +284,11 @@ input {
 							</select>
 						</td>
 					</tr>
-					<s:submit value="確認する" class="submit-button"/>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="確認する" class="submit-button" />
+						</td>
+					</tr>
 				</s:form>
 			</table>
 		</div>
